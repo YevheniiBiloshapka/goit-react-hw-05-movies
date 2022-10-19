@@ -3,7 +3,6 @@ import background from '../..//img/hero.jpg';
 
 export const Hero = styled.div`
   position: absolute;
-  z-index: -1;
   width: 100%;
   display: flex;
   align-items: center;
@@ -15,34 +14,37 @@ export const Hero = styled.div`
   background-position: center;
 `;
 
-export const Title = styled.h1`
+export const HeroForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 25px 0 0 0;
+  margin: 31px 0 0 0;
 
   font-weight: 800;
-  font-size: 60px;
+  font-size: 20px;
   line-height: 74.69%;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 
   color: #0d0d0d;
-
-  & span {
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 76.69%;
+  & h1 {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 84.19%;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    color: #0d0d0d;
 
-    color: #ffffff;
+    & span {
+      color: #ffffff;
+    }
   }
 `;
 
 export const FilmList = styled.ul`
+  position: relative;
+  z-index: 1;
   padding: 21px;
   background: #ffffff;
   box-shadow: -2px -2px 4px rgba(126, 147, 255, 0.2);

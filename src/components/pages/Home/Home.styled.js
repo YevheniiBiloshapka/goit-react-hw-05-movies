@@ -3,7 +3,6 @@ import background from '../..//img/hero.jpg';
 
 export const Hero = styled.div`
   position: absolute;
-  z-index: -1;
   width: 100%;
   display: flex;
   align-items: center;
@@ -43,6 +42,9 @@ export const Title = styled.h1`
 `;
 
 export const FilmList = styled.ul`
+  position: relative;
+  z-index: 1;
+
   padding: 21px;
   background: #ffffff;
   box-shadow: -2px -2px 4px rgba(126, 147, 255, 0.2);

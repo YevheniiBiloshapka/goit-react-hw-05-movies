@@ -30,9 +30,6 @@ export const NavList = styled.ul`
   color: #ffffff;
 `;
 export const LinkNav = styled(NavLink)`
-  position: relative;
-  padding: 29px 0;
-
   &:hover {
     font-weight: 700;
     color: #e10914;
@@ -70,4 +67,9 @@ export const LinkNav = styled(NavLink)`
       border-radius: 2px;
     }
   }
+`;
+
+export const NavItem = styled.li`
+  position: relative;
+  padding: 29px 0;
 `;

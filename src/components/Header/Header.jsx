@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Container } from '../Container/Container.styled';
-import { Head, Logo, NavList, LinkNav } from './Header.styled';
+import { Head, Logo, NavList, NavItem, LinkNav } from './Header.styled';
 import HeaderLogo from '../img/header__logo.svg';
 
 export const Header = () => {
@@ -14,14 +14,14 @@ export const Header = () => {
 
           <nav>
             <NavList>
-              <li>
+              <NavItem>
                 <LinkNav to="/" end>
                   Home
                 </LinkNav>
-              </li>
-              <li>
+              </NavItem>
+              <NavItem>
                 <LinkNav to="movies">Movies</LinkNav>
-              </li>
+              </NavItem>
             </NavList>
           </nav>
         </Container>
