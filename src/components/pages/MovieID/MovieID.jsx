@@ -16,6 +16,7 @@ import { Cast } from './Cast/Cast';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
 import { fetchMovieById } from '../../services/fetchAPI';
+import imageNotFound from '../../img/coveNotFound.jpg';
 
 export const MovieId = () => {
   const { movieId } = useParams();
@@ -28,6 +29,7 @@ export const MovieId = () => {
   if (!movie) {
     return;
   }
+
   const { poster_path, title, overview, genres, vote_average } = movie;
   return (
     <>
@@ -39,7 +41,11 @@ export const MovieId = () => {
         <Box>
           <Image>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              src={
+                poster_path === null
+                  ? imageNotFound
+                  : `https://image.tmdb.org/t/p/w500/${poster_path}`
+              }
               alt=""
               width="240"
               height="300"

@@ -37,6 +37,7 @@ export const Item = styled.li`
     color: #0e1721;
   }
   & p {
+    width: 125px;
     font-weight: 400;
     font-size: 10px;
     line-height: 130%;

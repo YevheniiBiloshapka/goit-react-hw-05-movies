@@ -2,12 +2,11 @@ import { List, Item } from './Cast.styled';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchMovieCast } from '../../../services/fetchAPI';
-import avatarNone from '../../../img/avatarNone.png';
+import castNotFound from '../../../img/castNotFound.jpg';
 
 export const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
-  console.log(cast);
 
   useEffect(() => {
     fetchMovieCast(movieId).then(setCast);
@@ -19,13 +18,14 @@ export const Cast = () => {
 
   return (
     <List>
+      {cast.length === 0 && <p>Not found</p>}
       {cast.map(({ profile_path, character, id, name }) => (
         <Item key={id}>
           <div>
             <img
               src={
                 profile_path === null
-                  ? avatarNone
+                  ? castNotFound
                   : `https://image.tmdb.org/t/p/w500/${profile_path}`
               }
               alt=""

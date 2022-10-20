@@ -31,7 +31,7 @@ export const Home = () => {
         <FilmList>
           {trandMovie.map(({ id, poster_path, title, original_title }) => (
             <Item key={id}>
-              <NavLink to={`/movies/${id}`}>
+              <NavLink to={`/movies/${id}/cast`}>
                 <ItemImage
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                   alt={original_title}
