@@ -4,7 +4,7 @@ import { Button, Input, Form } from 'components/Forms/Forms.styled';
 import { useEffect, useState } from 'react';
 
 import { fetchSearchMovie } from '../../services/fetchAPI';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { FilmList } from '../Movie/FilmList/FilmList';
 
 export const Movie = () => {
@@ -13,8 +13,6 @@ export const Movie = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
-  const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     if (query === null || query.trim() === '') return;

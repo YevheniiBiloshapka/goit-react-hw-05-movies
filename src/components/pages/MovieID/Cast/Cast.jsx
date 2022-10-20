@@ -28,7 +28,7 @@ export const Cast = () => {
                   ? castNotFound
                   : `https://image.tmdb.org/t/p/w500/${profile_path}`
               }
-              alt=""
+              alt={name}
             />
           </div>
           <h4>{name}</h4>

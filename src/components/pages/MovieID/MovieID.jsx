@@ -14,13 +14,21 @@ import { MdArrowBack } from 'react-icons/md';
 import { Reviews } from './Reviews/Reviews';
 import { Cast } from './Cast/Cast';
 import { useEffect, useState } from 'react';
-import { Routes, Route, useParams } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  useParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { fetchMovieById } from '../../services/fetchAPI';
 import imageNotFound from '../../img/coveNotFound.jpg';
 
 export const MovieId = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovieById(movieId).then(setMovie);
@@ -34,7 +42,7 @@ export const MovieId = () => {
   return (
     <>
       <Container>
-        <Button>
+        <Button onClick={() => navigate(location?.state?.from ?? '/')}>
           <MdArrowBack />
           Go back
         </Button>
