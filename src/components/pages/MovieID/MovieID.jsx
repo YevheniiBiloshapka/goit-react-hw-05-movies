@@ -13,8 +13,22 @@ import {
 import { MdArrowBack } from 'react-icons/md';
 import { Reviews } from './Reviews/Reviews';
 import { Cast } from './Cast/Cast';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
+import { fetchMovieById } from '../../services/fetchAPI';
 
 export const MovieId = () => {
+  const { movieId } = useParams();
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    fetchMovieById(movieId).then(setMovie);
+  }, [movieId]);
+
+  if (!movie) {
+    return;
+  }
+  const { poster_path, title, overview, genres, vote_average } = movie;
   return (
     <>
       <Container>
@@ -25,38 +39,29 @@ export const MovieId = () => {
         <Box>
           <Image>
             <img
-              src="https://upload.wikimedia.org/wikipedia/ru/thumb/b/b2/The_Batman_Poster.jpg/202px-The_Batman_Poster.jpg"
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               alt=""
+              width="240"
+              height="300"
             />
           </Image>
           <Descr>
             <FilmName>
-              <h2>The Batman</h2>
+              <h2>{title}</h2>
               <p>
-                User Score:
-                <span>74%</span>
+                Vote Average:
+                <span>{vote_average}</span>
               </p>
             </FilmName>
             <FilmInfo>
               <div>
                 <h3>Overview</h3>
-                <p>
-                  An American superhero film based on the DC comic book
-                  superhero Batman, produced by major Warner Bros. Pictures, DC
-                  Films, 6th & Idaho and Dylan Clark Productions, which is a
-                  reboot of the Batman films. The film is directed by Matt
-                  Reeves, who co-wrote the screenplay with Peter Craigomruen.
-                  Starring Robert Pattinson, Zoë Kravitz, Paul Dano, Jeffrey
-                  Wright, John Turturro, Peter Sarsgaard, Andy Serkis and Colin
-                  Farrell. Batman (Pattinson) is in his second year of fighting
-                  crime and trying to uncover the causes of Gotham's
-                  aggravation, while facing off against the Riddler (Dano), a
-                  serial killer who preys on Gotham's elite power.
-                </p>
+                <p>{overview}</p>
               </div>
               <div>
                 <h3>Genres</h3>
-                <p>Drama History War</p>
+
+                <p>{genres.map(({ name }) => name + ', ')}</p>
               </div>
             </FilmInfo>
           </Descr>
@@ -65,14 +70,17 @@ export const MovieId = () => {
           <h2>Additional information</h2>
           <TabList>
             <li>
-              <Item href="/">Cast</Item>
+              <Item to="cast">Cast</Item>
             </li>
             <li>
-              <Item href="/reviews">Reviews</Item>
+              <Item to="reviews">Reviews</Item>
             </li>
           </TabList>
-          <Reviews />
-          <Cast />
+
+          <Routes>
+            <Route path="reviews" element={<Reviews />}></Route>
+            <Route path="cast" element={<Cast />}></Route>
+          </Routes>
         </Addition>
       </Container>
     </>

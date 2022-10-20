@@ -1,31 +1,42 @@
 import { List, Item, Avatar, Comment } from './Reviews.styled';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchMovieReviews } from '../../../services/fetchAPI';
+import avatarNone from '../../../img/avatarNone.png';
 
 export const Reviews = () => {
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState(null);
+  console.log(reviews);
+
+  useEffect(() => {
+    fetchMovieReviews(movieId).then(setReviews);
+  }, [movieId]);
+
+  if (!reviews) {
+    return;
+  }
   return (
     <List>
-      <Item>
-        <Avatar>
-          <img
-            src="https://www.011global.com/Account/Slices/user-anonymous.png"
-            alt=""
-          />
-        </Avatar>
+      {reviews.map(({ author, author_details, content, id }) => (
+        <Item key={id}>
+          <Avatar>
+            <img
+              src={
+                author_details.avatar_path === null
+                  ? `https://image.tmdb.org/t/p/w500/${author_details.avatar_path}`
+                  : author_details.avatar_path.substring(1)
+              }
+              alt="avatar"
+            />
+          </Avatar>
 
-        <Comment>
-          <h3>Paul Dano</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
-        </Comment>
-      </Item>
+          <Comment>
+            <h3>{author}</h3>
+            <p>{content}</p>
+          </Comment>
+        </Item>
+      ))}
     </List>
   );
 };

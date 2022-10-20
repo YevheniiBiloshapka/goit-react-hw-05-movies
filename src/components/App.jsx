@@ -9,9 +9,16 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Home />} />
-        <Route path="/movies" element={<MovieId />} />
-        <Route path="/movies/details" element={<Movie />} />
+        <Route path="/movies" element={<Movie />} />
+        <Route path="/movies/:movieId/*" element={<MovieId />}>
+          {/* <Route path="/movies" element={<div>sdfsdf<div />} /> */}
+        </Route>
       </Route>
     </Routes>
   );
 };
+// home;
+// movies / query;
+// movies / id;
+// movies / id / reviews;
+// movies / id / cast;

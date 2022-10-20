@@ -15,12 +15,17 @@ export const Item = styled.li`
   padding-bottom: 10px;
   border-radius: 6px;
   background-color: #e7e5e5;
-
-  & img {
-    width: 158px;
-    height: 206px;
+  & div {
+    width: 100%;
+    height: 249px;
+    overflow: hidden;
     border-radius: 6px;
     margin-bottom: 6px;
+  }
+  & img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
   & h4 {
     font-weight: 500;

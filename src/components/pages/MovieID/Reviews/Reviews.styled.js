@@ -48,6 +48,7 @@ export const Avatar = styled.div`
   background-color: #fff;
   border-radius: 50%;
   margin-right: 20px;
+  overflow: hidden; ;
 `;
 
 export const Comment = styled.div`

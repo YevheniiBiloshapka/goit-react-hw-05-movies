@@ -10,12 +10,12 @@ import {
 
 import { Container } from '../../Container/Container.styled';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import { fetchTrend } from '../../services/fetchAPI';
 
 export const Home = () => {
   const [trandMovie, setTrandMovie] = useState([]);
-  console.log(trandMovie);
-
   useEffect(() => {
     fetchTrend().then(setTrandMovie);
   }, []);
@@ -31,9 +31,9 @@ export const Home = () => {
         <FilmList>
           {trandMovie.map(({ id, poster_path, title, original_title }) => (
             <Item key={id}>
-              <a href="/">
+              <NavLink to={`/movies/${id}`}>
                 <ItemImage
-                  src={poster_path}
+                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                   alt={original_title}
                   width="240"
                   height="300"
@@ -41,7 +41,7 @@ export const Home = () => {
                 <Tumb>
                   <ItemName>{title}</ItemName>
                 </Tumb>
-              </a>
+              </NavLink>
             </Item>
           ))}
         </FilmList>
