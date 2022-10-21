@@ -14,8 +14,9 @@ const Movie = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
+
   useEffect(() => {
-    if (query === null || query.trim() === '') return;
+    if (query === null || query.trim().length === 0) return;
 
     fetchSearchMovie(query, page).then(res => {
       setMovie(prevMovie => [...prevMovie, ...res.results]);
