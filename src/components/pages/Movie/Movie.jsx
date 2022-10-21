@@ -14,7 +14,6 @@ const Movie = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
-
   useEffect(() => {
     if (query === null || query.trim() === '') return;
 
@@ -50,9 +49,13 @@ const Movie = () => {
         </HeroForm>
       </Hero>
       <Container>
+        {totalPages === 0 && (
+          <Box>
+            <NotFound query={query} />
+          </Box>
+        )}
         {totalPages > 1 && (
           <Box>
-            {totalPages === 0 && <NotFound query={query} />}
             {totalPages > 1 && <FilmList movie={movie} page={loadMore} />}
             {page < totalPages && <Button onClick={loadMore}>load more</Button>}
           </Box>
