@@ -49,7 +49,7 @@ const Movie = () => {
         </HeroForm>
       </Hero>
       <Container>
-        {totalPages === 0 && (
+        {totalPages < 1 && (
           <Box>
             <NotFound query={query} />
           </Box>
