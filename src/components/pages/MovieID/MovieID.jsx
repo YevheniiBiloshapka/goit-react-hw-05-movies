@@ -24,7 +24,7 @@ import {
 import { fetchMovieById } from '../../services/fetchAPI';
 import imageNotFound from '../../img/coveNotFound.jpg';
 
-export const MovieId = () => {
+const MovieId = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
@@ -84,10 +84,14 @@ export const MovieId = () => {
           <h2>Additional information</h2>
           <TabList>
             <li>
-              <Item to="cast">Cast</Item>
+              <Item to="cast" state={location.state}>
+                Cast
+              </Item>
             </li>
             <li>
-              <Item to="reviews">Reviews</Item>
+              <Item to="reviews" state={location.state}>
+                Reviews
+              </Item>
             </li>
           </TabList>
 
@@ -100,3 +104,5 @@ export const MovieId = () => {
     </>
   );
 };
+
+export default MovieId;

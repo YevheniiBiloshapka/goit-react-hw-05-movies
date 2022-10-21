@@ -23,7 +23,7 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #f5454e;
+    background: #d00812;
 
     transform: scale(1.02);
   }

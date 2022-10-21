@@ -14,7 +14,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 import { fetchTrend } from '../../services/fetchAPI';
 
-export const Home = () => {
+const Home = () => {
   const location = useLocation();
   const [trandMovie, setTrandMovie] = useState([]);
   useEffect(() => {
@@ -50,3 +50,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

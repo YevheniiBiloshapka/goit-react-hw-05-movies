@@ -71,10 +71,7 @@ export const Item = styled.li`
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     transform: scale(1.05);
-    cursor: zoom-in;
-    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.37))
-      drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.25));
-    border-radius: 6.52px;
+    box-shadow: 0px 0px 20px rgba(47, 3, 3, 0.43);
   }
 `;
 export const ItemImage = styled.img`

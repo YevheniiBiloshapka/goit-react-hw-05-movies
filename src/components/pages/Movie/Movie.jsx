@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react';
 import { fetchSearchMovie } from '../../services/fetchAPI';
 import { useSearchParams } from 'react-router-dom';
 import { FilmList } from '../Movie/FilmList/FilmList';
+import { NotFound } from './NotFound/NotFound';
 
-export const Movie = () => {
+const Movie = () => {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -16,6 +17,7 @@ export const Movie = () => {
 
   useEffect(() => {
     if (query === null || query.trim() === '') return;
+
     fetchSearchMovie(query, page).then(res => {
       setMovie(prevMovie => [...prevMovie, ...res.results]);
       setTotalPages(res.total_pages);
@@ -50,7 +52,8 @@ export const Movie = () => {
       <Container>
         {totalPages > 1 && (
           <Box>
-            <FilmList movie={movie} page={loadMore} />
+            {totalPages === 0 && <NotFound query={query} />}
+            {totalPages > 1 && <FilmList movie={movie} page={loadMore} />}
             {page < totalPages && <Button onClick={loadMore}>load more</Button>}
           </Box>
         )}
@@ -58,3 +61,5 @@ export const Movie = () => {
     </>
   );
 };
+
+export default Movie;

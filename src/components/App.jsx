@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import { Header } from './Header/Header';
-import { Home } from './pages/Home/Home';
-import { Movie } from './pages/Movie/Movie';
-import { MovieId } from './pages//MovieID/MovieID';
+import { lazy } from 'react';
+import Header from './Header/Header';
+const Home = lazy(() => import('./pages/Home/Home'));
+const Movie = lazy(() => import('./pages/Movie/Movie'));
+const MovieId = lazy(() => import('./pages//MovieID/MovieID'));
 
 export const App = () => {
   return (

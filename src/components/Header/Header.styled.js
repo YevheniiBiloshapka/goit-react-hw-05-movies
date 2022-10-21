@@ -30,8 +30,8 @@ export const NavList = styled.ul`
   color: #ffffff;
 `;
 export const LinkNav = styled(NavLink)`
+  font-weight: 700;
   &:hover {
-    font-weight: 700;
     color: #e10914;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }

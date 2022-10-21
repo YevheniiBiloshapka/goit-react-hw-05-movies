@@ -7,14 +7,20 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  width: 158px;
-  height: 249px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 158px;
+  height: 249px;
   padding-bottom: 10px;
+
   border-radius: 6px;
-  background-color: #e7e5e5;
+  background: #ffffff;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+
+  text-align: center;
+
   & div {
     width: 100%;
     height: 249px;

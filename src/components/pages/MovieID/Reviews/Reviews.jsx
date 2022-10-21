@@ -4,6 +4,16 @@ import { useEffect, useState } from 'react';
 import { fetchMovieReviews } from '../../../services/fetchAPI';
 import avatarNone from '../../../img/reviewsAvatarNone.jpg';
 
+function includeURL(string) {
+  if (string === null) {
+    return avatarNone;
+  } else if (string.includes('https')) {
+    return string.substring(1);
+  } else {
+    return `https://image.tmdb.org/t/p/w500/${string}`;
+  }
+}
+
 export const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
@@ -23,14 +33,7 @@ export const Reviews = () => {
         reviews.map(({ author, author_details, content, id }) => (
           <Item key={id}>
             <Avatar>
-              <img
-                src={
-                  author_details.avatar_path === null
-                    ? avatarNone
-                    : `https://image.tmdb.org/t/p/w500/${author_details.avatar_path}`
-                }
-                alt="avatar"
-              />
+              <img src={includeURL(author_details.avatar_path)} alt="avatar" />
             </Avatar>
 
             <Comment>
