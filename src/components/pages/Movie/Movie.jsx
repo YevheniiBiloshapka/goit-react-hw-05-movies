@@ -16,7 +16,11 @@ const Movie = () => {
   const query = searchParams.get('query');
 
   useEffect(() => {
-    if (query === null || query.trim().length === 0) return;
+    console.log('top', query);
+    if (query === null || query.trim().length === 0 || query === '/&') {
+      return;
+    }
+    console.log(query);
 
     fetchSearchMovie(query, page).then(res => {
       setMovie(prevMovie => [...prevMovie, ...res.results]);
